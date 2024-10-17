@@ -3,46 +3,72 @@
 {% block content %}
 
 <!--страница с основным текстом по теме-->
-  <!-- Main Section -->
-  <main class="singleProject my-md">
+<!-- Main Section -->
+<main class="singleProject my-md">
     <div class="container">
-      <div class="layout">
-        <div class="column column--1of3">
-          <h3 class="singleProject__subtitle">Мои соц. сети</h3>
-          <div class="singleProject__toolStack">
-            <span class="tag tag--pill tag--sub tag--lg">
-              <small><a href="projects.html">Instagram</a></small>
-            </span>
-            <span class="tag tag--pill tag--sub tag--lg">
-              <small><a href="projects.html">Youtube</a></small>
-            </span>
-            <span class="tag tag--pill tag--sub tag--lg">
+        <div class="layout">
+            <div class="column column--1of3">
+                <h3 class="singleProject__subtitle">Мои соц. сети</h3>
+                <div class="singleProject__toolStack">
+                   <span class="tag tag--pill tag--sub tag--lg">
+              <small><a href="https://t.me/+79J3Qqku8NFiM2E6">Telegram</a></small>
+                    </span>
+                    <span class="#">
+              <small><a class="trigger-inst">Youtube</a></small>
+                    </span>
+                    <span class="tag tag--pill tag--sub tag--lg">
               <small><a href="https://vk.com/id115284178?from=search">VK</a></small>
-            </span>
-            <span class="tag tag--pill tag--sub tag--lg">
-              <small><a href="https://vk.com/id115284178?from=search">Telegram</a></small>
-            </span>
-          </div>
-        </div>
-        <div class="column column--2of3">
-          <img class="singleProject__preview" src="{{ lesson.image.url }}" alt="portfolio thumbnail" />
-          <a href="profile.html" class="singleProject__developer">Anya Krepets</a>
-          <h2 class="singleProject__title">{{ lesson.title }}</h2>
-<!--          <h3 class="singleProject__subtitle">About the Project</h3>-->
-          <div class="singleProject__info">
-            {{ lesson.description }}
-          </div>
+                    </span>
+                    <span class="#">
+              <small><a class="trigger">Instagram</a></small>
+                    </span>
+                </div>
+            </div>
+            <div class="column column--2of3">
+                <div style="text-align: center">
+                    <video width="333" height="660" controls>
+                        <source src="{{lesson.video.url}}">
+                    </video>
+                </div>
+                <a href="profile.html" class="singleProject__developer">Anya Krepets</a>
+                <h2 class="singleProject__title">{{ lesson.title }}</h2>
 
-          <div class="comments">
-            <h3 class="singleProject__subtitle">Feedback</h3>
-            <h5 class="project--rating">
-              {{ lesson.vote_ratio }}% Positive Feedback ({{ lesson.vote_total }} Vote{{ lesson.vote_total|pluralize:'s' }})
-            </h5>
-          </div>
+                <div class="singleProject__info">
+                    {{ lesson.description }}
+                </div>
+
+
+                <div class="modal">
+                    <div class="modal-content">
+                        <span class="close-button">×</span>
+                        <div>
+                            <p>Переходите на контент запрещенный в рф</p>
+                            <p>Требуется включить впн</p>
+                            <p>если у вас нет впн установите наш</p>
+                            <p>если включен нажмите кнопку Инстаграм </p>
+                            <p>Рекомендует Аня</p>
+                        </div>
+                        <small><a href="https://www.instagram.com/anya_krepets?igsh=MTNpbGY2cjFrODE5dQ=="
+                                  class="trigger">Instagram</a></small>
+                    </div>
+                </div>
+
+
+                <div class="modal_you">
+                    <div class="modal-content_you">
+                        <span class="close-button_you">×</span>
+                        <p>Переходите на контент замедленный в рф</p>
+                        <p>Может потребуется включить впн</p>
+                        <p>если у вас нет впн установите наш</p>
+                        <p>Рекомендует Аня</p>
+                        <small><a href="https://vk.com/id115284178?from=search" class="trigger-inst">Youtube</a></small>
+                    </div>
+                </div>
+
+            </div>
         </div>
-      </div>
     </div>
     </div>
-  </main>
+</main>
 
 {% endblock %}

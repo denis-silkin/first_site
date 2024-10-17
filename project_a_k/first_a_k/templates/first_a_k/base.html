@@ -16,16 +16,35 @@
   <!-- Dev Search UI -->
   <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
 
-  <title>DevSearch - Connect with Developers!</title>
+  <link rel="stylesheet" href="{% static 'styles/ind.css' %}" />
+    # модальное окно для ютуб
+  <link rel="stylesheet" href="{% static 'styles/modal.css' %}" />
+    # модальное окно для инстаграмм
+  <link rel="stylesheet" href="{% static 'styles/modal_you.css' %}" />
+
 </head>
 
 <body>
 
 {% include 'first_a_k/navigation.html' %}
 
+{% if messages %}
+{% for message in messages %}
+<div style="text-align: center">
+  <div class="alert alert--{{ message.tags }}">
+          <p class="alert__message">{{ message }}</p>
+          <button class="alert__close">&Cross;</button>
+        </div>
+</div>
+{% endfor %}
+{% endif %}
+
 {% block content %}
 {% endblock %}
 
+<script src="{% static 'uikit/app.js' %}"></script>
+<script src="{% static 'uikit/modal.js' %}"></script>
+<script src="{% static 'uikit/modal_you.js' %}"></script>
 </body>
 
 </html>

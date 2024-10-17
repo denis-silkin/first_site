@@ -9,29 +9,15 @@
                 <a class="backButton" href="#"><img src="{% static 'images/left.png' %}" alt="left"></a>
                 <br>
 
-                <form class="form" method="POST">
+                <form class="form" method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    <!-- Input:Text -->
+                    {% for field in form %}
                     <div class="form__field">
-                        <label for="formInput#text">Text Field: </label>
-                        <input class="input input--text" id="formInput#text" type="text" name="text"
-                            placeholder="Enter text" />
+                        <label for="formInput#text">{{ field.label }}: </label>
+                        {{ field }}
                     </div>
-
-                    <!-- Input:Text -->
-                    <div class="form__field">
-                        <label for="formInput#text">Text Field: </label>
-                        <input class="input input--text" id="formInput#text" type="text" name="text"
-                            placeholder="Enter text" />
-                    </div>
-
-                    <!-- Input:Text -->
-                    <div class="form__field">
-                        <label for="formInput#text">Text Field: </label>
-                        <input class="input input--text" id="formInput#text" type="text" name="text"
-                            placeholder="Enter text" />
-                    </div>
-                    <input class="btn btn--sub btn--lg  my-md" type="submit" value="Submit" />
+                    {% endfor %}
+                    <input class="btn btn--sub btn--lg  my-md" type="submit" value="Добавить" />
                 </form>
             </div>
         </div>

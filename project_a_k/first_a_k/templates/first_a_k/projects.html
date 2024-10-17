@@ -7,14 +7,14 @@
     <section class="hero-section text-center">
       <div class="container container--narrow">
         <div class="hero-section__box">
-          <h2><span>Поиск</span></h2>
+          <h2><span></span></h2>
         </div>
 
         <div class="hero-section__search">
-          <form class="form" action="#" method="get">
+          <form class="form" action="{% url 'first_a_k' %}" method="get">
             <div class="form__field">
               <label for="formInput#search">Search By Projects </label>
-              <input class="input input--text" id="formInput#search" type="text" name="text"
+              <input class="input input--text" value="{{ search_query }}" id="formInput#search" type="text" name="search_query"
                 placeholder="Поиск по уроку" />
             </div>
 
@@ -34,23 +34,24 @@
                 <img class="project__thumbnail" src="{{ first.image.url }}" alt="project thumbnail" />
                 <div class="card__body">
                   <h3 class="project__title">{{ first.title }}</h3>
-                  <p><a class="project__author" href="profile.html">By Anya Krepets</a></p>
-                  <p class="project--rating">
-                    <span style="font-weight: bold;">{{ first.vote_ratio }}%</span> Positive
-                    Feedback ({{ first.vote_total }} Vote{{ first.vote_total|pluralize:'s' }})
-                  </p>
+                  <p><a class="project__author" href="{% url 'lesson' first.id %}">By Anya Krepets</a></p>
+<!--                  <p class="project&#45;&#45;rating">-->
+<!--                    <span style="font-weight: bold;">{{ first.vote_ratio }}%</span> Positive-->
+<!--                    Feedback ({{ first.vote_total }} Vote{{ first.vote_total|pluralize:'s' }})-->
+<!--                  </p>-->
+                  <br>
                   <div class="project__tags">
                     <span class="tag tag--pill tag--main">
-                      <small><a href="projects.html">Instagram</a></small>
+                      <small><a href="https://www.instagram.com/anya_krepets?igsh=MTNpbGY2cjFrODE5dQ==">Instagram</a></small>
                     </span>
                     <span class="tag tag--pill tag--main">
-                      <small><a href="projects.html">Youtube</a></small>
+                      <small><a href="https://www.youtube.com/channel/UCZ3LWXX6l-XLItl_i1Jn5EA">Youtube</a></small>
                     </span>
                     <span class="tag tag--pill tag--main">
                       <small><a href="https://vk.com/id115284178?from=search">VK</a></small>
                     </span>
                     <span class="tag tag--pill tag--main">
-                      <small><a href="projects.html">Telegram</a></small>
+                      <small><a href="https://t.me/+79J3Qqku8NFiM2E6">Telegram</a></small>
                     </span>
                   </div>
                 </div>
@@ -63,22 +64,25 @@
       </div>
     </section>
 
+    {% if first_a_k.has_other_pages %}
     <div class="pagination">
       <ul class="container">
-        <li><a href="#" class="btn btn--disabled">&#10094; Prev</a></li>
-        <li><a href="#" class="btn btn--sub">01</a></li>
-        <li><a href="#" class="btn">02</a></li>
-        <li><a href="#" class="btn">03</a></li>
-        <li><a href="#" class="btn">04</a></li>
-        <li><a href="#" class="btn">05</a></li>
-        <li><a href="#" class="btn">06</a></li>
-        <li><a href="#" class="btn">07</a></li>
-        <li><a href="#" class="btn">08</a></li>
-        <li><a href="#" class="btn">09</a></li>
-        <li><a href="#" class="btn">10</a></li>
-        <li><a href="#" class="btn">Next &#10095;</a></li>
+        {% if first_a_k.has_previous %}
+        <li><a href="?page={{first_a_k.previous_page_number}}" class="btn page-link">&#10094; Prev</a></li>
+        {% endif %}
+        {% for page in paginator.page_range %}
+        {% if page == first_a_k.number %}
+        <li><a href="?page={{page}}" class="btn btn--sub page-link">{{ page }}</a></li>
+        {% else %}
+        <li><a href="?page={{page}}" class="btn page-link">{{ page }}</a></li>
+        {% endif %}
+        {% endfor %}
+        {% if first_a_k.has_next %}
+        <li><a href="?page={{first_a_k.next_page_number}}" class="btn page-link">Next &#10095;</a></li>
+        {% endif %}
       </ul>
     </div>
+    {% endif %}
   </main>
 
 {% endblock %}

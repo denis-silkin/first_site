@@ -1,9 +1,15 @@
 {% load static %}
   <header class="header">
     <div class="container container--narrow">
-      <a href="/" class="header__logo">
+        {% if request.user.is_authenticated %}
+      <a href="{% url 'index' %}" class="header__logo">
         <img src="{% static 'images/logo.svg' %}" alt="DevSearch Logo" />
       </a>
+      {% else %}
+      <a href="#" class="header__logo">
+        <img src="{% static 'images/logo.svg' %}" alt="DevSearch Logo" />
+      </a>
+      {% endif %}
       <nav class="header__nav">
         <input type="checkbox" id="responsive-menu" />
         <label for="responsive-menu" class="toggle-menu">
@@ -11,14 +17,17 @@
           <div class="toggle-menu__lines"></div>
         </label>
         <ul class="header__menu">
-          <li class="header__menuItem"><a href="index.html">Главная</a></li>
+            {% if request.user.is_authenticated %}
+          <li class="header__menuItem"><a href="{% url 'index' %}">Главная</a></li>
           <li class="header__menuItem"><a href="{% url 'first_a_k' %}">Учеба</a></li>
-          <li class="header__menuItem"><a href="inbox.html">Продукты</a></li>
           <li class="header__menuItem"><a href="account.html">Личный кабинет</a></li>
-
+<!--          только для админа-->
           <li class="header__menuItem"><a href="{% url 'create-lesson' %}">Новая тема</a></li>
 
-          <li class="header__menuItem"><a href="login.html" class="btn btn--sub">Вход</a></li>
+          <li class="header__menuItem"><a href="{% url 'logout' %}" class="btn btn--sub">Выйти</a></li>
+            {% else %}
+          <li class="header__menuItem"><a href="{% url 'login' %}" class="btn btn--sub">Войти</a></li>
+            {% endif %}
         </ul>
       </nav>
     </div>

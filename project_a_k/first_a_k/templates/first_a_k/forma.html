@@ -3,24 +3,32 @@
 {% block content %}
 
     <!-- Main Section -->
-    <main class="formPage my-xl">
-        <div class="content-box">
-            <div class="formWrapper">
-                <a class="backButton" href="#"><img src="{% static 'images/left.png' %}" alt="left"></a>
-                <br>
 
-                <form class="form" method="POST" enctype="multipart/form-data">
+            <div class="forma">
+                <form method="POST" enctype="multipart/form-data">
                     {% csrf_token %}
-                    {% for field in form %}
-                    <div class="form__field">
-                        <label for="formInput#text">{{ field.label }}: </label>
-                        {{ field }}
+                    <div>
+                        {{ form }}
                     </div>
-                    {% endfor %}
-                    <input class="btn btn--sub btn--lg  my-md" type="submit" value="Добавить" />
+                    <button class="wrap-button">Добавить</button>
                 </form>
             </div>
+
+
+<footer>
+
+        <div class="top">
+            <div class="logo">
+                <a href="{% url 'index' %}">Аня Крепец | Reels</a>
+            </div>
+
+            <div class="social-links" >
+                <a href="#"><i class='bx bxl-telegram'></i></a>
+                <a href="#"><i class='bx bxl-instagram'></i></a>
+                <a href="#"><i class='bx bxl-vk'></i></a>
+                <a href="#"><i class='bx bxl-youtube'></i></a>
+            </div>
         </div>
-    </main>
+    </footer>
 
 {% endblock %}

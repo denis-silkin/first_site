@@ -4,23 +4,13 @@
 
 <head>
   <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
-  <!-- Favicon -->
-  <link rel="shortcut icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
-  <!-- Icon - font-awesome -->
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
-  <!-- Mumble UI -->
-  <link rel="stylesheet" href="{% static 'uikit/styles/uikit.css' %}" />
-  <!-- Dev Search UI -->
-  <link rel="stylesheet" href="{% static 'styles/app.css' %}" />
-
-  <link rel="stylesheet" href="{% static 'styles/ind.css' %}" />
-    # модальное окно для ютуб
-  <link rel="stylesheet" href="{% static 'styles/modal.css' %}" />
-    # модальное окно для инстаграмм
-  <link rel="stylesheet" href="{% static 'styles/modal_you.css' %}" />
+      <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+      <link rel="stylesheet" href="{% static 'styles/style.css' %}" />
+      <link rel="stylesheet" href="{% static 'styles/forma_style.css' %}" />
+      <link rel="stylesheet" href="{% static 'styles/login.css' %}" />
+      <link rel="stylesheet" href="{% static 'uikit/pagination.css' %}" />
+      <link rel="stylesheet" href="{% static 'styles/modal.css' %}" />
 
 </head>
 
@@ -31,9 +21,9 @@
 {% if messages %}
 {% for message in messages %}
 <div style="text-align: center">
-  <div class="alert alert--{{ message.tags }}">
-          <p class="alert__message">{{ message }}</p>
-          <button class="alert__close">&Cross;</button>
+  <div>
+          <p >{{ message }}</p>
+<!--          <button >&Cross;</button>-->
         </div>
 </div>
 {% endfor %}
@@ -42,9 +32,8 @@
 {% block content %}
 {% endblock %}
 
-<script src="{% static 'uikit/app.js' %}"></script>
-<script src="{% static 'uikit/modal.js' %}"></script>
-<script src="{% static 'uikit/modal_you.js' %}"></script>
+<script src="{% static 'uikit/func.js' %}"></script>
+<script src="{% static 'uikit/modal_func.js' %}"></script>
 </body>
 
 </html>

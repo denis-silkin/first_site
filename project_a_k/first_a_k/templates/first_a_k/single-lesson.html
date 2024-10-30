@@ -3,72 +3,54 @@
 {% block content %}
 
 <!--страница с основным текстом по теме-->
-<!-- Main Section -->
-<main class="singleProject my-md">
-    <div class="container">
-        <div class="layout">
-            <div class="column column--1of3">
-                <h3 class="singleProject__subtitle">Мои соц. сети</h3>
-                <div class="singleProject__toolStack">
-                   <span class="tag tag--pill tag--sub tag--lg">
-              <small><a href="https://t.me/+79J3Qqku8NFiM2E6">Telegram</a></small>
-                    </span>
-                    <span class="#">
-              <small><a class="trigger-inst">Youtube</a></small>
-                    </span>
-                    <span class="tag tag--pill tag--sub tag--lg">
-              <small><a href="https://vk.com/id115284178?from=search">VK</a></small>
-                    </span>
-                    <span class="#">
-              <small><a class="trigger">Instagram</a></small>
-                    </span>
-                </div>
-            </div>
-            <div class="column column--2of3">
-                <div style="text-align: center">
-                    <video width="333" height="660" controls>
-                        <source src="{{lesson.video.url}}">
-                    </video>
-                </div>
-                <a href="profile.html" class="singleProject__developer">Anya Krepets</a>
-                <h2 class="singleProject__title">{{ lesson.title }}</h2>
 
-                <div class="singleProject__info">
-                    {{ lesson.description }}
-                </div>
-
-
-                <div class="modal">
-                    <div class="modal-content">
-                        <span class="close-button">×</span>
-                        <div>
-                            <p>Переходите на контент запрещенный в рф</p>
-                            <p>Требуется включить впн</p>
-                            <p>если у вас нет впн установите наш</p>
-                            <p>если включен нажмите кнопку Инстаграм </p>
-                            <p>Рекомендует Аня</p>
-                        </div>
-                        <small><a href="https://www.instagram.com/anya_krepets?igsh=MTNpbGY2cjFrODE5dQ=="
-                                  class="trigger">Instagram</a></small>
-                    </div>
-                </div>
-
-
-                <div class="modal_you">
-                    <div class="modal-content_you">
-                        <span class="close-button_you">×</span>
-                        <p>Переходите на контент замедленный в рф</p>
-                        <p>Может потребуется включить впн</p>
-                        <p>если у вас нет впн установите наш</p>
-                        <p>Рекомендует Аня</p>
-                        <small><a href="https://vk.com/id115284178?from=search" class="trigger-inst">Youtube</a></small>
-                    </div>
-                </div>
-
+<div class="about" id="about">
+        <div class="left">
+            <img src="{{ lesson.image.url }}">
+            <div class="social-links" >
+                <a href="https://t.me/+79J3Qqku8NFiM2E6"><i class='bx bxl-telegram'></i></a>
+                <a href="https://www.instagram.com/anya_krepets?igsh=MTNpbGY2cjFrODE5dQ=="><i class='bx bxl-instagram'></i></a>
+                <a href="https://vk.com/id115284178?from=search"><i class='bx bxl-vk'></i></a>
+                <a href="https://vk.com/id115284178?from=search"><i class='bx bxl-youtube'></i></a>
             </div>
         </div>
+        <div class="right">
+            <h3>{{ lesson.title }}</h3>
+            <h5>by Anya Krepets</h5>
+            <p>
+                {{ lesson.description }}
+            </p>
+        </div>
     </div>
-    </div>
-</main>
+
+<!--# modal-->
+
+<!--<button onclick="toggleModal()" type="button">Open</button>-->
+
+<!--<div class="modal-background" onclick="toggleModal()"></div>-->
+<!--<div class="modal">-->
+<!--    <h2>Modal</h2>-->
+<!--    <p>-->
+<!--        You have-->
+<!--    </p>-->
+<!--    <button href="https://www.instagram.com/anya_krepets?igsh=MTNpbGY2cjFrODE5dQ==">open</button>-->
+<!--</div>-->
+
+
+
+<footer>
+        <div class="top">
+            <div class="logo">
+                <a href="{% url 'index' %}">Аня Крепец | Reels</a>
+            </div>
+
+            <div class="social-links" >
+                <a href="https://t.me/+79J3Qqku8NFiM2E6"><i class='bx bxl-telegram'></i></a>
+                <a href="https://www.instagram.com/anya_krepets?igsh=MTNpbGY2cjFrODE5dQ=="><i class='bx bxl-instagram'></i></a>
+                <a href="https://vk.com/id115284178?from=search"><i class='bx bxl-vk'></i></a>
+                <a href="https://www.youtube.com/channel/UCZ3LWXX6l-XLItl_i1Jn5EA"><i class='bx bxl-youtube'></i></a>
+            </div>
+        </div>
+    </footer>
 
 {% endblock %}

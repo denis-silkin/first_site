@@ -1,0 +1,14 @@
+{% extends 'first_a_k/base.html' %}
+
+{% block content %}
+<div class="wrapper">
+    <h1>Регистрация:</h1>
+    <h3>{{ error }}</h3>
+    <form action="{% url 'register' %}" method="post" class="formas">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button class="wrap-button">Зарегистрировать</button>
+    </form>
+</div>
+
+{% endblock %}

@@ -3,86 +3,132 @@
 {% block content %}
 
 <!--страница с заголовками тем-->
-  <main class="projects">
-    <section class="hero-section text-center">
-      <div class="container container--narrow">
-        <div class="hero-section__box">
-          <h2><span></span></h2>
+<div class="portfolio" id="portfolio">
+    <div class="header">
+        <div class="info">
+            <h3>Успехов в обучении</h3>
+            <br>
+            <h2><a href="#" class="trigger">Поиск</a></h2>
         </div>
+    </div>
+    <div class="portfo-items">
+        {% for first in first_a_k %}
+        <div class="item">
+            <a href="{% url 'lesson' first.id %}">
+                <img src="{{ first.image.url }}">
 
-        <div class="hero-section__search">
-          <form class="form" action="{% url 'first_a_k' %}" method="get">
-            <div class="form__field">
-              <label for="formInput#search">Search By Projects </label>
-              <input class="input input--text" value="{{ search_query }}" id="formInput#search" type="text" name="search_query"
-                placeholder="Поиск по уроку" />
-            </div>
-
-            <input class="btn btn--sub btn--lg" type="submit" value="Найти" />
-          </form>
-        </div>
-      </div>
-    </section>
-    <!-- Search Result: DevList -->
-    <section class="projectsList">
-      <div class="container">
-        <div class="grid grid--three">
-          {% for first in first_a_k %}
-          <div class="column">
-            <div class="card project">
-              <a href="{% url 'lesson' first.id %}" class="project">
-                <img class="project__thumbnail" src="{{ first.image.url }}" alt="project thumbnail" />
-                <div class="card__body">
-                  <h3 class="project__title">{{ first.title }}</h3>
-                  <p><a class="project__author" href="{% url 'lesson' first.id %}">By Anya Krepets</a></p>
-<!--                  <p class="project&#45;&#45;rating">-->
-<!--                    <span style="font-weight: bold;">{{ first.vote_ratio }}%</span> Positive-->
-<!--                    Feedback ({{ first.vote_total }} Vote{{ first.vote_total|pluralize:'s' }})-->
-<!--                  </p>-->
-                  <br>
-                  <div class="project__tags">
-                    <span class="tag tag--pill tag--main">
-                      <small><a href="https://www.instagram.com/anya_krepets?igsh=MTNpbGY2cjFrODE5dQ==">Instagram</a></small>
-                    </span>
-                    <span class="tag tag--pill tag--main">
-                      <small><a href="https://www.youtube.com/channel/UCZ3LWXX6l-XLItl_i1Jn5EA">Youtube</a></small>
-                    </span>
-                    <span class="tag tag--pill tag--main">
-                      <small><a href="https://vk.com/id115284178?from=search">VK</a></small>
-                    </span>
-                    <span class="tag tag--pill tag--main">
-                      <small><a href="https://t.me/+79J3Qqku8NFiM2E6">Telegram</a></small>
-                    </span>
-                  </div>
+                <div class="info">
+                    <h4>{{ first.title }}</h4>
                 </div>
-              </a>
-            </div>
-          </div>
-          {% endfor %}
-
+            </a>
         </div>
-      </div>
-    </section>
+        {% endfor %}
+    </div>
+</div>
 
-    {% if first_a_k.has_other_pages %}
-    <div class="pagination">
-      <ul class="container">
+<div class="modal">
+    <div class="modal-content">
+        <span class="close-button">×</span>
+<!--        <h1>Hello, I am a modal!</h1>-->
+          <form class="form" action="{% url 'first_a_k' %}" method="get">
+              <input value="{{ search_query }}" type="text" name="search_query"
+                placeholder="Поиск" />
+    </div>
+</div>
+
+<!--  <main class="projects">-->
+<!--    <section class="hero-section text-center">-->
+<!--      <div class="container container&#45;&#45;narrow">-->
+<!--        <div class="hero-section__box">-->
+<!--          <h2><span></span></h2>-->
+<!--        </div>-->
+
+<!--        <div class="hero-section__search">-->
+<!--          <form class="form" action="{% url 'first_a_k' %}" method="get">-->
+<!--            <div class="form__field">-->
+<!--              <label for="formInput#search">Search By Projects </label>-->
+<!--              <input class="input input&#45;&#45;text" value="{{ search_query }}" id="formInput#search" type="text" name="search_query"-->
+<!--                placeholder="Поиск по уроку" />-->
+<!--            </div>-->
+
+<!--            <input class="btn btn&#45;&#45;sub btn&#45;&#45;lg" type="submit" value="Найти" />-->
+<!--          </form>-->
+<!--        </div>-->
+<!--      </div>-->
+<!--    </section>-->
+<!--    &lt;!&ndash; Search Result: DevList &ndash;&gt;-->
+<!--    <section class="projectsList">-->
+<!--      <div class="container">-->
+<!--        <div class="grid grid&#45;&#45;three">-->
+<!--          {% for first in first_a_k %}-->
+<!--          <div class="column">-->
+<!--            <div class="card project">-->
+<!--              <a href="{% url 'lesson' first.id %}" class="project">-->
+<!--                <img class="project__thumbnail" src="{{ first.image.url }}" alt="project thumbnail" />-->
+<!--                <div class="card__body">-->
+<!--                  <h3 class="project__title">{{ first.title }}</h3>-->
+<!--                  <p><a class="project__author" href="{% url 'lesson' first.id %}">By Anya Krepets</a></p>-->
+<!--                  <br>-->
+<!--                  <div class="project__tags">-->
+<!--                    <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                      <small><a href="https://www.instagram.com/anya_krepets?igsh=MTNpbGY2cjFrODE5dQ==">Instagram</a></small>-->
+<!--                    </span>-->
+<!--                    <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                      <small><a href="https://www.youtube.com/channel/UCZ3LWXX6l-XLItl_i1Jn5EA">Youtube</a></small>-->
+<!--                    </span>-->
+<!--                    <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                      <small><a href="https://vk.com/id115284178?from=search">VK</a></small>-->
+<!--                    </span>-->
+<!--                    <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
+<!--                      <small><a href="https://t.me/+79J3Qqku8NFiM2E6">Telegram</a></small>-->
+<!--                    </span>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--              </a>-->
+<!--            </div>-->
+<!--          </div>-->
+<!--          {% endfor %}-->
+
+<!--        </div>-->
+<!--      </div>-->
+<!--    </section>-->
+
+{% if first_a_k.has_other_pages %}
+<div class="container">
+    <ul class="pagination">
         {% if first_a_k.has_previous %}
-        <li><a href="?page={{first_a_k.previous_page_number}}" class="btn page-link">&#10094; Prev</a></li>
+        <li><a href="?page={{first_a_k.previous_page_number}}">&#10094; Prev</a></li>
         {% endif %}
         {% for page in paginator.page_range %}
         {% if page == first_a_k.number %}
-        <li><a href="?page={{page}}" class="btn btn--sub page-link">{{ page }}</a></li>
+        <li><a href="?page={{page}}" class="active">{{ page }}</a></li>
         {% else %}
-        <li><a href="?page={{page}}" class="btn page-link">{{ page }}</a></li>
+        <li><a href="?page={{page}}">{{ page }}</a></li>
         {% endif %}
         {% endfor %}
         {% if first_a_k.has_next %}
-        <li><a href="?page={{first_a_k.next_page_number}}" class="btn page-link">Next &#10095;</a></li>
+        <li><a href="?page={{first_a_k.next_page_number}}">Next &#10095;</a></li>
         {% endif %}
-      </ul>
-    </div>
-    {% endif %}
-  </main>
+    </ul>
+</div>
+{% endif %}
+
+<footer>
+
+        <div class="top">
+            <div class="logo">
+<!--                <img src="assets/logo.png">-->
+                <a href="{% url 'index' %}">Аня Крепец | Reels</a>
+            </div>
+
+            <div class="social-links" >
+                <a href="https://t.me/+79J3Qqku8NFiM2E6"><i class='bx bxl-telegram'></i></a>
+                <a href="https://www.instagram.com/anya_krepets?igsh=MTNpbGY2cjFrODE5dQ=="><i class='bx bxl-instagram'></i></a>
+                <a href="https://vk.com/id115284178?from=search"><i class='bx bxl-vk'></i></a>
+                <a href="https://www.youtube.com/channel/UCZ3LWXX6l-XLItl_i1Jn5EA"><i class='bx bxl-youtube'></i></a>
+            </div>
+        </div>
+    </footer>
+
 
 {% endblock %}

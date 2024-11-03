@@ -40,6 +40,6 @@
   background: rgba(255, 255, 255, 0.05);
 }
 
-.container .pagination li .active a {
-  background: rgba(255, 255, 255, 0.05);
+.container .pagination li active a {
+  background: #FF0000;
 }

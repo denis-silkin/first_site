@@ -3,7 +3,6 @@ from .models import Administrator
 from .forms import AdministratorForm
 from django.contrib.auth import login, logout, authenticate
 from django.contrib.auth.forms import UserCreationForm, AuthenticationForm
-from django.core.exceptions import ObjectDoesNotExist
 from django.contrib.auth.models import User
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
@@ -92,6 +91,12 @@ def create_lesson(request):
 @login_required(login_url='login')
 def index(request):
     return render(request, 'first_a_k/index.html')
+
+
+# личный кабинет
+@login_required(login_url='login')
+def room(request):
+    return render(request, 'first_a_k/room.html')
 
 
 # регистрация

@@ -12,10 +12,12 @@
           {% if user.is_authenticated %}
             <li><a href="{% url 'index' %}">Главная</a></li>
             <li><a href="{% url 'first_a_k' %}">Модули</a></li>
-            <li><a href="#">Личный кабинет</a></li>
+            <li><a href="{% url 'room' %}">Личный кабинет</a></li>
             <li>Имя: {{ user.username }}</li>
+            {% if user.username == 'Anya_Admin' %}
             <li><a href="{% url 'create-lesson' %}">Новая тема</a></li>
             <li><a href="{% url 'register' %}">Регистрация</a></li>
+            {% endif %}
         </ul>
     <form action="{% url 'logout' %}" method="post">
         {% csrf_token %}
@@ -24,7 +26,4 @@
           {% else %}
         <a href="{% url 'login' %}"><button>Войти</button></a>
           {% endif %}
-
-<!--    # для админа-->
-
-    </nav>
+</nav>

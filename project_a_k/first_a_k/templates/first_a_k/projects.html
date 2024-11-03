@@ -36,62 +36,7 @@
     </div>
 </div>
 
-<!--  <main class="projects">-->
-<!--    <section class="hero-section text-center">-->
-<!--      <div class="container container&#45;&#45;narrow">-->
-<!--        <div class="hero-section__box">-->
-<!--          <h2><span></span></h2>-->
-<!--        </div>-->
-
-<!--        <div class="hero-section__search">-->
-<!--          <form class="form" action="{% url 'first_a_k' %}" method="get">-->
-<!--            <div class="form__field">-->
-<!--              <label for="formInput#search">Search By Projects </label>-->
-<!--              <input class="input input&#45;&#45;text" value="{{ search_query }}" id="formInput#search" type="text" name="search_query"-->
-<!--                placeholder="Поиск по уроку" />-->
-<!--            </div>-->
-
-<!--            <input class="btn btn&#45;&#45;sub btn&#45;&#45;lg" type="submit" value="Найти" />-->
-<!--          </form>-->
-<!--        </div>-->
-<!--      </div>-->
-<!--    </section>-->
-<!--    &lt;!&ndash; Search Result: DevList &ndash;&gt;-->
-<!--    <section class="projectsList">-->
-<!--      <div class="container">-->
-<!--        <div class="grid grid&#45;&#45;three">-->
-<!--          {% for first in first_a_k %}-->
-<!--          <div class="column">-->
-<!--            <div class="card project">-->
-<!--              <a href="{% url 'lesson' first.id %}" class="project">-->
-<!--                <img class="project__thumbnail" src="{{ first.image.url }}" alt="project thumbnail" />-->
-<!--                <div class="card__body">-->
-<!--                  <h3 class="project__title">{{ first.title }}</h3>-->
-<!--                  <p><a class="project__author" href="{% url 'lesson' first.id %}">By Anya Krepets</a></p>-->
-<!--                  <br>-->
-<!--                  <div class="project__tags">-->
-<!--                    <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
-<!--                      <small><a href="https://www.instagram.com/anya_krepets?igsh=MTNpbGY2cjFrODE5dQ==">Instagram</a></small>-->
-<!--                    </span>-->
-<!--                    <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
-<!--                      <small><a href="https://www.youtube.com/channel/UCZ3LWXX6l-XLItl_i1Jn5EA">Youtube</a></small>-->
-<!--                    </span>-->
-<!--                    <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
-<!--                      <small><a href="https://vk.com/id115284178?from=search">VK</a></small>-->
-<!--                    </span>-->
-<!--                    <span class="tag tag&#45;&#45;pill tag&#45;&#45;main">-->
-<!--                      <small><a href="https://t.me/+79J3Qqku8NFiM2E6">Telegram</a></small>-->
-<!--                    </span>-->
-<!--                  </div>-->
-<!--                </div>-->
-<!--              </a>-->
-<!--            </div>-->
-<!--          </div>-->
-<!--          {% endfor %}-->
-
-<!--        </div>-->
-<!--      </div>-->
-<!--    </section>-->
+<!--Пагинация-->
 
 {% if first_a_k.has_other_pages %}
 <div class="container">
@@ -101,7 +46,7 @@
         {% endif %}
         {% for page in paginator.page_range %}
         {% if page == first_a_k.number %}
-        <li><a href="?page={{page}}" class="active">{{ page }}</a></li>
+        <li><a href="?page={{page}}">{{ page }}</a></li>
         {% else %}
         <li><a href="?page={{page}}">{{ page }}</a></li>
         {% endif %}
@@ -114,14 +59,12 @@
 {% endif %}
 
 <footer>
-
         <div class="top">
             <div class="logo">
-<!--                <img src="assets/logo.png">-->
                 <a href="{% url 'index' %}">Аня Крепец | Reels</a>
             </div>
 
-            <div class="social-links" >
+            <div class="social-links">
                 <a href="https://t.me/+79J3Qqku8NFiM2E6"><i class='bx bxl-telegram'></i></a>
                 <a href="https://www.instagram.com/anya_krepets?igsh=MTNpbGY2cjFrODE5dQ=="><i class='bx bxl-instagram'></i></a>
                 <a href="https://vk.com/id115284178?from=search"><i class='bx bxl-vk'></i></a>
@@ -129,6 +72,5 @@
             </div>
         </div>
     </footer>
-
 
 {% endblock %}
